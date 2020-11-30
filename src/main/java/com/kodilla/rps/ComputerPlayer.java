@@ -5,9 +5,11 @@ import java.util.Random;
 public class ComputerPlayer implements Player {
     private final Random rnd = new Random();
     private final String name;
+    private final int gameType;
 
-    public ComputerPlayer(String name) {
+    public ComputerPlayer(String name, int gameType) {
         this.name = name;
+        this.gameType = gameType;
     }
 
     @Override
@@ -17,6 +19,12 @@ public class ComputerPlayer implements Player {
 
     @Override
     public int getRoll() {
-        return rnd.nextInt(5);
+        int max;
+        if (gameType == 1){
+            max = 3;
+        } else {
+            max = 5;
+        }
+        return rnd.nextInt(max);
     }
 }
